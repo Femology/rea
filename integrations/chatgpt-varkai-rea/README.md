@@ -2,7 +2,7 @@
 
 A small, **private and read-focused** bridge between the existing REA stdio MCP server and ChatGPT-compatible Streamable HTTP clients. This does NOT modify REA's reverse-engineering engine.
 
-**Status:** Source scaffold and automated protocol tests; not yet deployed, registered with ChatGPT, or validated with a real REA backend. Do not advertise it as a finished or publicly published plugin.
+**Status:** Fake-process tests, real REA 6.8.0 analysis, Kernel CDP inspection and MCP Inspector checks have passed. Not yet registered with ChatGPT or deployed as a persistent service. See [validation report](VALIDATION.md).
 
 ## Included
 
@@ -52,11 +52,11 @@ ChatGPT can connect to remote MCP services only where account/workspace permissi
 
     node --test integrations/chatgpt-varkai-rea/tests/bridge.test.mjs
 
-These tests launch a fake REA MCP subprocess. They check initialize, tool discovery, read allowlisting, denied commands, notification acknowledgment, static bearer checks and public-interface refusal. They do **not** prove full REA analysis or ChatGPT integration. For an end-to-end verification, separately test with actual REA, a clean browser target, and the ChatGPT connection.
+These tests launch a fake REA MCP subprocess to verify protocol, authentication and tool allowlisting. To test actual REA, install version 6.8.0 and run `REA_ENTRY=/absolute/path/to/rea-agents/scripts/rea.mjs node --test integrations/chatgpt-varkai-rea/tests/real-rea.test.mjs`. A successful real REA test does **not** establish a live ChatGPT plugin connection. Read the [validation report](VALIDATION.md).
 
 ## Kernel integration
 
-Kernel is already available as a _separately connected_ browser-automation provider in ChatGPT. REA's Chromium CDP inspection is not automatically connected to Kernel's browser sessions; the products do not share an execution host by default. For a combined workflow, inspect with Kernel, export authorized artifacts or recordings, and hand those to a secured REA worker where supported. Direct CDP interconnection requires new code and permission/transport design.
+Kernel is a _separately connected_ browser-automation provider in ChatGPT. A direct Chrome DevTools Protocol test succeeded when REA was installed **inside the same disposable Kernel browser VM** as Chrome; REA discovered the page, inspected its DOM and captured a screenshot. This arrangement is not an always-on ChatGPT plugin connection. A persistent worker, private tunnel and workspace authorization are still required. In other environments, use authorized exported browser artifacts rather than assuming a shared CDP endpoint.
 
 ## Reconstruction workflow
 
