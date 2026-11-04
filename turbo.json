@@ -87,7 +87,8 @@
         "!docs/.vitepress/cache/**",
         "!docs/.vitepress/dist/**",
         "!website/_site/**",
-        "*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}"
+        "*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
+        "integrations/chatgpt-varkai-rea/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}"
       ]
     },
     "format:check": {},
