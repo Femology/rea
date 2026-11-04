@@ -1,0 +1,41 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "varkai-rea",
+  "version": "0.1.0",
+  "description": "Evidence-based inspection of websites and supported application artifacts, with reconstruction guidance.",
+  "author": {
+    "name": "Varkai",
+    "url": "https://github.com/Femology/rea"
+  },
+  "homepage": "https://github.com/Femology/rea",
+  "repository": "https://github.com/Femology/rea",
+  "license": "MIT",
+  "keywords": [
+    "reverse-engineering",
+    "website-analysis",
+    "android-analysis",
+    "mcp",
+    "visual-regression"
+  ],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/setup/SKILL.md",
+      "interface": {
+        "displayName": "Varkai REA",
+        "shortDescription": "Inspect software with evidence",
+        "longDescription": "Analyze authorized websites and supported applications through REA. Reconstruct behavior with visual and functional tests, preserving unknowns.",
+        "developerName": "Varkai",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read"
+        ],
+        "websiteURL": "https://github.com/Femology/rea",
+        "defaultPrompt": [
+          "Inspect an authorized website and identify its scripts, architecture, and visible interactions.",
+          "Help me reconstruct this feature, documenting what is observed and what remains inferred.",
+          "Analyze an Android APK I own and summarize manifest and decompilation findings."
+        ]
+      }
+    }
+  }
+}
