@@ -56,7 +56,7 @@ These tests launch a fake REA MCP subprocess. They check initialize, tool discov
 
 ## Kernel integration
 
-Kernel is already available as a *separately connected* browser-automation provider in ChatGPT. REA's Chromium CDP inspection is not automatically connected to Kernel's browser sessions; the products do not share an execution host by default. For a combined workflow, inspect with Kernel, export authorized artifacts or recordings, and hand those to a secured REA worker where supported. Direct CDP interconnection requires new code and permission/transport design.
+Kernel is already available as a _separately connected_ browser-automation provider in ChatGPT. REA's Chromium CDP inspection is not automatically connected to Kernel's browser sessions; the products do not share an execution host by default. For a combined workflow, inspect with Kernel, export authorized artifacts or recordings, and hand those to a secured REA worker where supported. Direct CDP interconnection requires new code and permission/transport design.
 
 ## Reconstruction workflow
 

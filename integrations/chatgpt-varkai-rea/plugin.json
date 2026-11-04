@@ -26,9 +26,7 @@
         "longDescription": "Analyze authorized websites and supported applications through REA. Reconstruct behavior with visual and functional tests, preserving unknowns.",
         "developerName": "Varkai",
         "category": "Developer Tools",
-        "capabilities": [
-          "Read"
-        ],
+        "capabilities": ["Read"],
         "websiteURL": "https://github.com/Femology/rea",
         "defaultPrompt": [
           "Inspect an authorized website and identify its scripts, architecture, and visible interactions.",
