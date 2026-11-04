@@ -1,0 +1,32 @@
+name: Varkai REA ChatGPT bridge
+on:
+  pull_request:
+    paths:
+      - "integrations/chatgpt-varkai-rea/**"
+      - ".github/workflows/varkai-rea-plugin.yml"
+  push:
+    branches:
+      - "feat/chatgpt-varkai-rea-mcp-bridge"
+    paths:
+      - "integrations/chatgpt-varkai-rea/**"
+      - ".github/workflows/varkai-rea-plugin.yml"
+permissions:
+  contents: read
+jobs:
+  protocol-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Check JavaScript syntax
+        run: |
+          node --check integrations/chatgpt-varkai-rea/src/rea-client.mjs
+          node --check integrations/chatgpt-varkai-rea/src/server.mjs
+          node --check integrations/chatgpt-varkai-rea/tests/bridge.test.mjs
+      - name: Verify plugin manifest parses
+        run: node -e "const m=require('./integrations/chatgpt-varkai-rea/plugin.json'); if(m.name!=='varkai-rea') process.exit(1);"
+      - name: Test isolated MCP gateway
+        run: node --test integrations/chatgpt-varkai-rea/tests/bridge.test.mjs
