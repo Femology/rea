@@ -16,6 +16,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Developer Tools"
+    },
+    {
+      "name": "varkai-rea",
+      "source": {
+        "source": "local",
+        "path": "./integrations/chatgpt-varkai-rea"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
     }
   ]
 }
