@@ -12,15 +12,15 @@ This report records **observed** checks on the private Varkai REA ChatGPT bridge
 
 ## Observed test results
 
-| Check | Result | What it proves |
-| --- | --- | --- |
-| Fake REA protocol tests | 3/3 pass | MCP initialize, tool selection, forbidden-tool rejection, optional bearer token, and refusing non-loopback listeners |
-| Real REA source analysis smoke test | 1/1 pass | The gateway can discover actual REA tools and invoke `analyze_javascript_application` on an owned JavaScript fixture; structured evidence is returned |
-| Real REA tool discovery | 14 allowed tools | The allowlist matches tool names advertised by REA 6.8.0 |
-| Kernel Chrome target discovery | Pass | REA can attach to the disposable Kernel Chrome CDP endpoint **when it runs in the same browser VM** |
-| Real website DOM / accessibility inspection | Pass | `inspect_web_page` inspected a disposable public `https://example.org/` tab |
-| Real browser screenshot | Pass | `capture_web_screenshot` produced image evidence for the test tab |
-| Independent MCP Inspector strict tools/list | 0 errors, 32 warnings | The exposed tools were discoverable via Inspector; warnings concerned permissive schemas inherited from the REA catalog |
+| Check                                       | Result                | What it proves                                                                                                                                        |
+| ------------------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Fake REA protocol tests                     | 3/3 pass              | MCP initialize, tool selection, forbidden-tool rejection, optional bearer token, and refusing non-loopback listeners                                  |
+| Real REA source analysis smoke test         | 1/1 pass              | The gateway can discover actual REA tools and invoke `analyze_javascript_application` on an owned JavaScript fixture; structured evidence is returned |
+| Real REA tool discovery                     | 14 allowed tools      | The allowlist matches tool names advertised by REA 6.8.0                                                                                              |
+| Kernel Chrome target discovery              | Pass                  | REA can attach to the disposable Kernel Chrome CDP endpoint **when it runs in the same browser VM**                                                   |
+| Real website DOM / accessibility inspection | Pass                  | `inspect_web_page` inspected a disposable public `https://example.org/` tab                                                                           |
+| Real browser screenshot                     | Pass                  | `capture_web_screenshot` produced image evidence for the test tab                                                                                     |
+| Independent MCP Inspector strict tools/list | 0 errors, 32 warnings | The exposed tools were discoverable via Inspector; warnings concerned permissive schemas inherited from the REA catalog                               |
 
 The browser and REA evidence IDs from the disposable tests were:
 
