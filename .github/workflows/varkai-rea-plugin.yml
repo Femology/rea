@@ -30,3 +30,9 @@ jobs:
         run: node -e "const m=require('./integrations/chatgpt-varkai-rea/plugin.json'); if(m.name!=='varkai-rea') process.exit(1);"
       - name: Test isolated MCP gateway
         run: node --test integrations/chatgpt-varkai-rea/tests/bridge.test.mjs
+      - name: Install REA release for integration smoke test
+        run: npm install --prefix "$RUNNER_TEMP/varkai-rea-smoke" --no-fund --no-audit --no-save rea-agents@6.8.0
+      - name: Test the real REA engine through MCP
+        env:
+          REA_ENTRY: ${{ runner.temp }}/varkai-rea-smoke/node_modules/rea-agents/scripts/rea.mjs
+        run: node --test integrations/chatgpt-varkai-rea/tests/real-rea.test.mjs

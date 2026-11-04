@@ -34,7 +34,9 @@ async function startServer(entry) {
     });
     child.stdout.setEncoding("utf8").on("data", (chunk) => {
       output += chunk;
-      const found = output.match(/listening on http:\/\/127\.0\.0\.1:(\d+)\/mcp/u);
+      const found = output.match(
+        /listening on http:\/\/127\.0\.0\.1:(\d+)\/mcp/u,
+      );
       if (found) {
         clearTimeout(timer);
         resolvePort(Number(found[1]));
